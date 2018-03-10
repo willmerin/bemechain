@@ -6,7 +6,8 @@
 
 from test_framework.test_framework import BitcoinTestFramework
 from test_framework.util import assert_equal, assert_true, bitcoind_processes, \
-    connect_nodes_bi, start_node, start_nodes, wait_and_assert_operationid_status
+    connect_nodes_bi, start_node, start_nodes, wait_and_assert_operationid_status, \
+    get_coinbase_address
 
 from decimal import Decimal
 
@@ -21,7 +22,8 @@ class WalletNullifiersTest (BitcoinTestFramework):
         myzaddr0 = self.nodes[0].z_getnewaddress()
 
         # send node 0 taddr to zaddr to get out of coinbase
-        mytaddr = self.nodes[0].getnewaddress()
+        # Tests using the default cached chain have one address per coinbase output
+        mytaddr = get_coinbase_address(self.nodes[0], 1)
         recipients = []
         recipients.append({"address":myzaddr0, "amount":Decimal('10.0')-Decimal('0.0001')}) # utxo amount less fee
         

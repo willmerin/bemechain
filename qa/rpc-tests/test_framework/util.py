@@ -416,3 +416,10 @@ def wait_and_assert_operationid_status(node, myopid, in_status='success', in_err
         return result # if there was an error return the result
     else:
         return txid # otherwise return the txid
+
+def get_coinbase_address(node, expected_utxos):
+    addrs = [utxo['address'] for utxo in node.listunspent() if utxo['generated']]
+    assert(len(set(addrs)) > 0)
+    addrs = [a for a in set(addrs) if addrs.count(a) == expected_utxos]
+    assert(len(addrs) > 0)
+    return addrs[0]

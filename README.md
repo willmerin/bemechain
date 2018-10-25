@@ -16,14 +16,6 @@ of Bemechain transactions; depending on the speed of your computer and network
 connection, the synchronization process could take a day or more once the
 blockchain has reached a significant size.
 
-<p align="center">
-  <img src="doc/imgs/zcashd_screen.gif" height="500">
-</p>
-
-#### :lock: Security Warnings
-
-See important security warnings on the
-[Security Information page](https://z.cash/support/security/).
 
 **Bemechain is experimental and a work-in-progress.** Use at your own risk.
 
